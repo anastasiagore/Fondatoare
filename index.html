@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FONDATOARE — Femei în Afaceri</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:           #F7F2EA;
+  --bg-deep:      #EDE5D8;
+  --ink:          #1C1714;
+  --ink-soft:     #4A3F38;
+  --muted:        #8C7B72;
+  --accent:       #B85C38;
+  --accent-deep:  #8C3E22;
+  --accent-warm:  #D4845F;
+  --gold:         #9A7B3C;
+  --gold-light:   #C4A55A;
+  --surface:      #EDE5D8;
+  --border:       rgba(28,23,20,0.12);
+  --font-logo:    'Cormorant Garamond', Georgia, serif;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-sans:    'DM Sans', system-ui, sans-serif;
+  --font-condensed: 'Cormorant Garamond', Georgia, serif;
+  --text-xs: clamp(0.7rem, 1.2vw, 0.8rem);
+  --text-sm: clamp(0.82rem, 1.5vw, 0.95rem);
+  --text-base: clamp(0.95rem, 2vw, 1.05rem);
+  --text-lg: clamp(1.1rem, 2.5vw, 1.35rem);
+  --text-xl: clamp(1.4rem, 3.5vw, 2rem);
+  --text-2xl: clamp(2rem, 5vw, 3.5rem);
+  --text-hero: clamp(4rem, 12vw, 11rem);
+  --section: clamp(4rem, 10vw, 8rem);
+  --wrap: min(1280px, 94vw);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Grain */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.4;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+}
+
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+/* ─── NAV ─── */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--ink);
+  border-bottom: 2px solid var(--accent);
+}
+
+.nav-inner {
+  width: var(--wrap);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  gap: 2rem;
+}
+
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #fff;
+  line-height: 1;
+}
+
+.nav-logo span {
+  color: var(--accent);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.75);
+  transition: color 0.2s;
+}
+
+.nav-links a:hover, .nav-links a.active { color: #fff; }
+
+.nav-links .nav-cta {
+  background: var(--accent);
+  color: #fff !important;
+  padding: 0.45rem 1.1rem;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: opacity 0.2s;
+}
+
+.nav-links .nav-cta:hover { opacity: 0.85; }
+
+.nav-lang {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.lang-btn {
+  background: none;
+  border: 1px solid rgba(255,255,255,0.25);
+  color: rgba(255,255,255,0.6);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  transition: all 0.2s;
+}
+
+.lang-btn.active, .lang-btn:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.5);
+  color: #fff;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #fff;
+  transition: all 0.3s;
+}
+
+/* ─── HERO ─── */
+.hero {
+  width: var(--wrap);
+  margin: 0 auto;
+  padding: 3rem 0 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.hero-date-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--ink);
+}
+
+.hero-date {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.hero-tagline {
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.hero-masthead {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: var(--text-hero);
+  font-weight: 700;
+  line-height: 0.88;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink);
+  display: block;
+  margin-bottom: 0.15em;
+}
+
+.hero-masthead .accent-letter {
+  color: var(--accent);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+  margin-top: 2rem;
+}
+
+.hero-main {
+  grid-column: 1 / 3;
+  border-right: 1px solid var(--border);
+  padding-right: 2rem;
+}
+
+.hero-sidebar {
+  padding-left: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.hero-label {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.6rem;
+  margin-bottom: 0.75rem;
+}
+
+.hero-label.local { background: var(--ink); }
+.hero-label.intl { background: var(--gold); }
+
+.hero-img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  background: var(--surface);
+  margin-bottom: 1.25rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Placeholder image via gradient */
+.img-placeholder {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: linear-gradient(135deg, #1C1714 0%, #2d1f14 40%, #4a2e1a 70%, #6b3d22 100%);
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: flex-end;
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.img-placeholder::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);
+}
+
+.img-placeholder.warm {
+  background: linear-gradient(135deg, #2d1b00 0%, #5c3d11 40%, #8b6914 70%, #c8a96e 100%);
+}
+
+.img-placeholder.cool {
+  background: linear-gradient(135deg, #0d1b2a 0%, #1b2838 40%, #2d3561 70%, #4a5568 100%);
+}
+
+.img-caption {
+  font-size: 0.65rem;
+  color: #fff;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 0.75rem;
+}
+
+.hero-title:hover { opacity: 0.8; cursor: pointer; }
+
+.hero-excerpt {
+  font-size: var(--text-sm);
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.hero-byline {
+  font-size: var(--text-xs);
+  color: var(--muted);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero-byline span { color: var(--accent); }
+
+/* Sidebar articles */
+.sidebar-article {
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.sidebar-article:last-child { border-bottom: none; padding-bottom: 0; }
+
+.sidebar-title {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+.sidebar-title:hover { opacity: 0.7; cursor: pointer; }
+
+.sidebar-meta {
+  font-size: var(--text-xs);
+  color: var(--muted);
+  letter-spacing: 0.06em;
+}
+
+/* ─── TICKER ─── */
+.ticker {
+  background: var(--ink);
+  padding: 0.6rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.ticker-inner {
+  display: inline-flex;
+  gap: 4rem;
+  animation: ticker 30s linear infinite;
+}
+
+.ticker-item {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+}
+
+.ticker-item span { color: var(--accent); margin-right: 0.75rem; }
+
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ─── NEWS GRID ─── */
+.section {
+  width: var(--wrap);
+  margin: 0 auto;
+  padding: var(--section) 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 3px solid var(--ink);
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-style: italic;
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+.section-link {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: gap 0.2s;
+}
+
+.section-link:hover { gap: 0.8rem; }
+
+/* Filter tabs */
+.filter-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 2.5rem;
+  border-bottom: 2px solid var(--border);
+}
+
+.filter-tab {
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  padding: 0.6rem 1.25rem;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: var(--muted);
+  font-family: var(--font-sans);
+  transition: all 0.2s;
+}
+
+.filter-tab:hover { color: var(--ink); }
+.filter-tab.active { color: var(--ink); border-bottom-color: var(--accent); }
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem 2rem;
+}
+
+.news-card {
+  cursor: pointer;
+  transition: transform 0.22s ease;
+}
+
+.news-card:hover { transform: translateY(-4px); }
+
+.news-card-img {
+  width: 100%;
+  aspect-ratio: 3/2;
+  background: var(--surface);
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.card-img-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  padding: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-img-placeholder.c1 { background: linear-gradient(135deg, #1a0a2e 0%, #4a1942 100%); }
+.card-img-placeholder.c2 { background: linear-gradient(135deg, #0a1628 0%, #1e3a5f 100%); }
+.card-img-placeholder.c3 { background: linear-gradient(135deg, #1a2a0a 0%, #2d5016 100%); }
+.card-img-placeholder.c4 { background: linear-gradient(135deg, #2a1a0a 0%, #5c3d11 100%); }
+.card-img-placeholder.c5 { background: linear-gradient(135deg, #0a2a2a 0%, #115c5c 100%); }
+.card-img-placeholder.c6 { background: linear-gradient(135deg, #2a0a0a 0%, #5c1111 100%); }
+
+.card-img-placeholder::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 50%);
+}
+
+.card-label {
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.card-label.moldova { background: var(--accent); color: #fff; }
+.card-label.regional { background: var(--gold); color: #fff; }
+.card-label.intl { background: var(--ink); color: #fff; }
+
+.card-title {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 0.5rem;
+}
+
+.card-meta {
+  font-size: var(--text-xs);
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.card-meta::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 1px;
+  background: var(--muted);
+}
+
+/* ─── ORGANIZATIONS ─── */
+.orgs-section {
+  background: #1C1714;
+  padding: var(--section) 0;
+}
+
+.orgs-inner {
+  width: var(--wrap);
+  margin: 0 auto;
+}
+
+.orgs-section .section-title { color: #fff; }
+
+.orgs-section .section-header {
+  border-bottom-color: rgba(255,255,255,0.15);
+}
+
+.orgs-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.org-card {
+  background: var(--ink);
+  padding: 2rem 1.75rem;
+  border: none;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+
+.org-card:hover { background: #1a1a1a; }
+
+.org-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--accent);
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.org-name {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.org-type {
+  font-size: var(--text-xs);
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.org-desc {
+  font-size: var(--text-xs);
+  color: rgba(255,255,255,0.5);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.org-link {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: color 0.2s, gap 0.2s;
+}
+
+.org-card:hover .org-link { color: #fff; gap: 0.8rem; }
+
+/* ─── INTERVIEWS TEASER ─── */
+.interviews {
+  background: var(--accent-deep);
+  padding: var(--section) 0;
+}
+
+.interviews-inner {
+  width: var(--wrap);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.interviews-label {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 1rem;
+}
+
+.interviews-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  font-weight: 900;
+  font-style: italic;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 1.25rem;
+}
+
+.interviews-text {
+  font-size: var(--text-base);
+  color: rgba(255,255,255,0.85);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.btn-white {
+  display: inline-block;
+  background: #fff;
+  color: var(--accent);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.9rem 2rem;
+  transition: opacity 0.2s;
+}
+
+.btn-white:hover { opacity: 0.9; }
+
+.interviews-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.interview-card {
+  background: rgba(0,0,0,0.15);
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  transition: background 0.2s;
+}
+
+.interview-card:hover { background: rgba(0,0,0,0.25); }
+
+.interview-avatar {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  background: rgba(255,255,255,0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.5);
+  font-style: italic;
+}
+
+.interview-info {}
+
+.interview-name {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.2rem;
+}
+
+.interview-role {
+  font-size: var(--text-xs);
+  color: rgba(255,255,255,0.65);
+}
+
+.interview-status {
+  margin-left: auto;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.6rem;
+  background: rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.8);
+  flex-shrink: 0;
+}
+
+/* ─── NEWSLETTER ─── */
+.newsletter {
+  padding: 4rem 0;
+  background: var(--bg-deep);
+  border-top: 3px solid var(--ink);
+  border-bottom: 3px solid var(--ink);
+}
+
+.newsletter-inner {
+  width: var(--wrap);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  justify-content: space-between;
+}
+
+.newsletter-text {}
+
+.newsletter-eyebrow {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.newsletter-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.newsletter-form {
+  display: flex;
+  gap: 0;
+  min-width: 420px;
+}
+
+.newsletter-input {
+  flex: 1;
+  border: 2px solid var(--ink);
+  border-right: none;
+  background: #fff;
+  padding: 0.9rem 1.25rem;
+  font-size: var(--text-sm);
+  font-family: var(--font-sans);
+  outline: none;
+}
+
+.newsletter-input::placeholder { color: var(--muted); }
+.newsletter-input:focus { border-color: var(--accent); }
+
+.newsletter-btn {
+  background: var(--ink);
+  color: #fff;
+  border: 2px solid var(--ink);
+  padding: 0.9rem 1.75rem;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+
+.newsletter-btn:hover { background: var(--accent); border-color: var(--accent); }
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--ink);
+  padding: 3rem 0 1.5rem;
+}
+
+.footer-inner {
+  width: var(--wrap);
+  margin: 0 auto;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  margin-bottom: 1.5rem;
+}
+
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.footer-logo span { color: var(--accent); }
+
+.footer-tagline {
+  font-size: var(--text-xs);
+  color: rgba(255,255,255,0.45);
+  line-height: 1.7;
+  font-style: italic;
+}
+
+.footer-col-title {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 1.25rem;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.footer-links a {
+  font-size: var(--text-sm);
+  color: rgba(255,255,255,0.65);
+  transition: color 0.2s;
+}
+
+.footer-links a:hover { color: #fff; }
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-copy {
+  font-size: var(--text-xs);
+  color: rgba(255,255,255,0.3);
+}
+
+.footer-socials {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer-socials a {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  transition: color 0.2s;
+}
+
+.footer-socials a:hover { color: #fff; }
+
+/* ─── REVEAL ANIMATIONS ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.75s cubic-bezier(.16,1,.3,1), transform 0.75s cubic-bezier(.16,1,.3,1);
+}
+
+.reveal.visible { opacity: 1; transform: none; }
+
+.reveal-group .reveal:nth-child(1) { transition-delay: 0ms; }
+.reveal-group .reveal:nth-child(2) { transition-delay: 80ms; }
+.reveal-group .reveal:nth-child(3) { transition-delay: 160ms; }
+.reveal-group .reveal:nth-child(4) { transition-delay: 240ms; }
+.reveal-group .reveal:nth-child(5) { transition-delay: 320ms; }
+.reveal-group .reveal:nth-child(6) { transition-delay: 400ms; }
+
+/* ─── HERO ENTRANCE ─── */
+.h-enter-1 { animation: fadeUp 0.7s cubic-bezier(.16,1,.3,1) both; animation-delay: 50ms; }
+.h-enter-2 { animation: fadeUp 0.7s cubic-bezier(.16,1,.3,1) both; animation-delay: 150ms; }
+.h-enter-3 { animation: fadeUp 0.7s cubic-bezier(.16,1,.3,1) both; animation-delay: 280ms; }
+.h-enter-4 { animation: fadeUp 0.7s cubic-bezier(.16,1,.3,1) both; animation-delay: 400ms; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1024px) {
+  .news-grid { grid-template-columns: repeat(2, 1fr); }
+  .orgs-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .hero-grid { grid-template-columns: 1fr 1fr; }
+  .hero-main { grid-column: 1 / 2; }
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--ink);
+    padding: 1.5rem;
+    gap: 1.25rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    z-index: 99;
+  }
+  .hamburger { display: flex; }
+  nav { position: relative; }
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-main { border-right: none; padding-right: 0; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
+  .hero-sidebar { padding-left: 0; padding-top: 2rem; }
+  .news-grid { grid-template-columns: 1fr; }
+  .orgs-grid { grid-template-columns: 1fr 1fr; }
+  .interviews-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .newsletter-inner { flex-direction: column; gap: 2rem; }
+  .newsletter-form { min-width: unset; width: 100%; }
+  .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+}
+
+@media (max-width: 480px) {
+  .orgs-grid { grid-template-columns: 1fr; }
+  .interviews-cards { display: none; }
+}
+
+/* Mobile nav bar */
+.mobile-cta-bar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--ink);
+  padding: 0.85rem 1.5rem;
+  z-index: 200;
+  border-top: 2px solid var(--accent);
+}
+
+@media (max-width: 768px) {
+  .mobile-cta-bar { display: flex; gap: 1rem; align-items: center; justify-content: space-between; }
+  body { padding-bottom: 4rem; }
+}
+
+.mobile-cta-bar span {
+  font-size: var(--text-xs);
+  color: rgba(255,255,255,0.6);
+  font-style: italic;
+}
+
+.mobile-cta-bar a {
+  background: var(--accent);
+  color: #fff;
+  padding: 0.6rem 1.25rem;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">FONDA<span>T</span>OARE</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#" class="active">Știri / Новости</a></li>
+      <li><a href="fondatoare-opportunities.html">Oportunități</a></li>
+      <li><a href="#">Organizații</a></li>
+      <li><a href="#">Interviuri</a></li>
+      <li><a href="#" class="nav-cta">Abonează-te</a></li>
+      <li>
+        <div class="nav-lang">
+          <button class="lang-btn active">RO</button>
+          <button class="lang-btn">RU</button>
+        </div>
+      </li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section>
+  <div class="hero">
+    <div class="hero-date-bar h-enter-1">
+      <span class="hero-date">Joi, 19 Martie 2026</span>
+      <span class="hero-tagline">Femei. Putere. Afaceri.</span>
+    </div>
+
+    <span class="hero-masthead h-enter-2">FONDA<span class="accent-letter">T</span>OARE</span>
+
+    <div class="hero-grid h-enter-3">
+      <div class="hero-main">
+        <span class="hero-label">Moldova</span>
+        <div class="img-placeholder warm">
+          <span class="img-caption">Forum Femei în Afaceri, Chișinău 2026</span>
+        </div>
+        <h1 class="hero-title">"Nu am așteptat permisiunea nimănui" — Ana Grigore, fondatoarea primului fond de capital de risc condus de femei din Moldova</h1>
+        <p class="hero-excerpt">Lansată în urmă cu trei ani cu un capital de 200.000 EUR, Meridian Ventures a finanțat până acum 11 startup-uri, din care 8 sunt profitabile. Ana Grigore vorbește despre ce înseamnă să construiești dintr-o țară mică și de ce refuză să definească succesul în termeni de exit.</p>
+        <p class="hero-byline">De <span>Redacția FONDATOARE</span> · Interviu exclusiv · 8 min citit</p>
+      </div>
+
+      <div class="hero-sidebar">
+        <div class="sidebar-article">
+          <span class="hero-label intl">Internațional</span>
+          <h2 class="sidebar-title">Goldman Sachs dublează programul 10,000 Women — 500M USD pentru antreprenoare din Europa de Est</h2>
+          <p class="sidebar-meta">Reuters · Ieri, 18:40</p>
+        </div>
+        <div class="sidebar-article">
+          <span class="hero-label local">Regional</span>
+          <h2 class="sidebar-title">România lansează primul ghișeu unic pentru antreprenoare: acces la granturi EU în 48 de ore</h2>
+          <p class="sidebar-meta">Digi24 · Azi, 10:12</p>
+        </div>
+        <div class="sidebar-article">
+          <span class="hero-label" style="background:var(--gold);color:#fff">EU</span>
+          <h2 class="sidebar-title">CERV 2026: 12 milioane EUR disponibili pentru proiecte de egalitate de gen în statele asociate</h2>
+          <p class="sidebar-meta">EC.europa.eu · 17 Martie</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner" id="ticker">
+    <span class="ticker-item"><span>●</span> FONDATOARE Index: 847 femei antreprenoare înregistrate în Q1 2026 în Moldova</span>
+    <span class="ticker-item"><span>●</span> Deadline: CERV-2026-GE — 28 Aprilie 2026</span>
+    <span class="ticker-item"><span>●</span> UN Women Moldova deschide al doilea ciclu de mentorat</span>
+    <span class="ticker-item"><span>●</span> WEF Global Gender Gap Report 2026: Moldova urcă 12 poziții</span>
+    <span class="ticker-item"><span>●</span> Programul EBRD Women in Business acceptă aplicații până pe 1 Mai</span>
+    <span class="ticker-item"><span>●</span> Forbes Women Summit, București — 14-15 Mai 2026</span>
+    <span class="ticker-item"><span>●</span> FONDATOARE Index: 847 femei antreprenoare înregistrate în Q1 2026 în Moldova</span>
+    <span class="ticker-item"><span>●</span> Deadline: CERV-2026-GE — 28 Aprilie 2026</span>
+    <span class="ticker-item"><span>●</span> UN Women Moldova deschide al doilea ciclu de mentorat</span>
+    <span class="ticker-item"><span>●</span> WEF Global Gender Gap Report 2026: Moldova urcă 12 poziții</span>
+    <span class="ticker-item"><span>●</span> Programul EBRD Women in Business acceptă aplicații până pe 1 Mai</span>
+    <span class="ticker-item"><span>●</span> Forbes Women Summit, București — 14-15 Mai 2026</span>
+  </div>
+</div>
+
+<!-- NEWS SECTION -->
+<section class="section" id="stiri">
+  <div class="section-header reveal">
+    <h2 class="section-title">Ultimele Știri</h2>
+    <a href="#" class="section-link">Toate știrile →</a>
+  </div>
+
+  <div class="filter-tabs reveal">
+    <button class="filter-tab active" data-filter="all">Toate</button>
+    <button class="filter-tab" data-filter="moldova">Moldova (50%)</button>
+    <button class="filter-tab" data-filter="regional">Regional CEE (30%)</button>
+    <button class="filter-tab" data-filter="intl">Internațional (20%)</button>
+  </div>
+
+  <div class="news-grid reveal-group">
+    <div class="news-card reveal" data-category="moldova">
+      <div class="news-card-img">
+        <div class="card-img-placeholder c1"></div>
+      </div>
+      <span class="card-label moldova">Moldova</span>
+      <h3 class="card-title">Ministerul Economiei anunță un fond de 3M USD dedicat startup-urilor fondate de femei</h3>
+      <div class="card-meta">19 Martie · 4 min</div>
+    </div>
+
+    <div class="news-card reveal" data-category="moldova">
+      <div class="news-card-img">
+        <div class="card-img-placeholder c2"></div>
+      </div>
+      <span class="card-label moldova">Moldova</span>
+      <h3 class="card-title">Interviu: Maria Cojocaru, CEO al celei mai mari rețele de farmacii din Moldova, despre leadership feminin</h3>
+      <div class="card-meta">18 Martie · 6 min</div>
+    </div>
+
+    <div class="news-card reveal" data-category="regional">
+      <div class="news-card-img">
+        <div class="card-img-placeholder c3"></div>
+      </div>
+      <span class="card-label regional">Regional</span>
+      <h3 class="card-title">România și Moldova semnează un acord de co-finanțare pentru antreprenoarele din zona rurală</h3>
+      <div class="card-meta">18 Martie · 3 min</div>
+    </div>
+
+    <div class="news-card reveal" data-category="moldova">
+      <div class="news-card-img">
+        <div class="card-img-placeholder c4"></div>
+      </div>
+      <span class="card-label moldova">Moldova</span>
+      <h3 class="card-title">Banca de Economii lansează linie de credit cu dobândă 0% pentru antreprenoare sub 35 de ani</span></h3>
+      <div class="card-meta">17 Martie · 2 min</div>
+    </div>
+
+    <div class="news-card reveal" data-category="intl">
+      <div class="news-card-img">
+        <div class="card-img-placeholder c5"></div>
+      </div>
+      <span class="card-label intl">Internațional</span>
+      <h3 class="card-title">UN Women: raport global — antreprenoarele generează 1.7 trilioane USD anual, dar primesc sub 2% din capitalul de risc</h3>
+      <div class="card-meta">17 Martie · 5 min</div>
+    </div>
+
+    <div class="news-card reveal" data-category="regional">
+      <div class="news-card-img">
+        <div class="card-img-placeholder c6"></div>
+      </div>
+      <span class="card-label regional">Regional</span>
+      <h3 class="card-title">Polonia, Cehia și Moldova formează un cluster regional de accelerare pentru femei în tech</h3>
+      <div class="card-meta">16 Martie · 4 min</div>
+    </div>
+  </div>
+</section>
+
+<!-- ORGANIZATIONS -->
+<section class="orgs-section">
+  <div class="orgs-inner">
+    <div class="section-header reveal" style="border-bottom-color: rgba(255,255,255,0.15);">
+      <h2 class="section-title" style="color:#fff">Organizații de Sprijin</h2>
+      <a href="#" class="section-link">Vezi toate →</a>
+    </div>
+
+    <div class="orgs-grid reveal-group">
+      <div class="org-card reveal">
+        <div class="org-icon">🏦</div>
+        <p class="org-type">Finanțare internațională</p>
+        <h3 class="org-name">EBRD Women in Business</h3>
+        <p class="org-desc">Credite și asistență tehnică pentru IMM-uri conduse de femei în Moldova. Acces la rețeaua europeană de mentori.</p>
+        <a href="#" class="org-link">ebrd.com →</a>
+      </div>
+
+      <div class="org-card reveal">
+        <div class="org-icon">🌍</div>
+        <p class="org-type">Agenție ONU</p>
+        <h3 class="org-name">UN Women Moldova</h3>
+        <p class="org-desc">Programe de mentorat, training în leadership, advocacy pentru politici de egalitate de gen în business.</p>
+        <a href="#" class="org-link">unwomen.org →</a>
+      </div>
+
+      <div class="org-card reveal">
+        <div class="org-icon">🇪🇺</div>
+        <p class="org-type">Program EU</p>
+        <h3 class="org-name">EU4Business Moldova</h3>
+        <p class="org-desc">Granturi și împrumuturi pentru femei antreprenoare, cu focus pe export și digitalizare. Birou local în Chișinău.</p>
+        <a href="#" class="org-link">eu4business.md →</a>
+      </div>
+
+      <div class="org-card reveal">
+        <div class="org-icon">💼</div>
+        <p class="org-type">Asociație locală</p>
+        <h3 class="org-name">Asociația Femeilor în Afaceri din Moldova</h3>
+        <p class="org-desc">Rețea de 400+ antreprenoare, evenimente lunare de networking, cursuri de business în Chișinău și regiuni.</p>
+        <a href="#" class="org-link">afam.md →</a>
+      </div>
+
+      <div class="org-card reveal">
+        <div class="org-icon">🚀</div>
+        <p class="org-type">Accelerator</p>
+        <h3 class="org-name">USAID WE Program</h3>
+        <p class="org-desc">Accelerator de 6 luni cu finanțare seed de până la 50,000 USD pentru startup-uri fondate sau co-fondate de femei.</p>
+        <a href="#" class="org-link">usaid.gov/moldova →</a>
+      </div>
+
+      <div class="org-card reveal">
+        <div class="org-icon">📚</div>
+        <p class="org-type">Formare</p>
+        <h3 class="org-name">GIZ Moldova — Women Leadership</h3>
+        <p class="org-desc">Traininguri gratuite în management, negociere și strategie de business pentru femei din sectorul privat și public.</p>
+        <a href="#" class="org-link">giz.de →</a>
+      </div>
+
+      <div class="org-card reveal">
+        <div class="org-icon">💡</div>
+        <p class="org-type">Inovare</p>
+        <h3 class="org-name">Innovation Hub Moldova (ODIMM)</h3>
+        <p class="org-desc">Incubator de business cu sprijin dedicat antreprenoriatului feminin. Programe de la start la scalare.</p>
+        <a href="#" class="org-link">odimm.md →</a>
+      </div>
+
+      <div class="org-card reveal">
+        <div class="org-icon">🤝</div>
+        <p class="org-type">Mentorat</p>
+        <h3 class="org-name">Business Women Network</h3>
+        <p class="org-desc">Platformă de mentorat peer-to-peer între femei antreprenoare din Moldova și diaspora. Comunitate privată, acces prin recomandare.</p>
+        <a href="#" class="org-link">bwn.md →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERVIEWS TEASER -->
+<section class="interviews">
+  <div class="interviews-inner">
+    <div class="reveal">
+      <p class="interviews-label">Coming Soon · 2026</p>
+      <h2 class="interviews-title">Poveștile care nu ajung în presă</h2>
+      <p class="interviews-text">Interviuri premium cu femei antreprenoare din Moldova și regiune — despre eșecuri reale, capitalul nervos, și cum se construiește ceva durabil fără să se renunțe la sine.</p>
+      <p class="interviews-text" style="font-size:var(--text-sm); color:rgba(255,255,255,0.65);">Fii prima care știe când se lansează primul interviu.</p>
+      <a href="#" class="btn-white">Notifică-mă la lansare</a>
+    </div>
+
+    <div class="interviews-cards reveal">
+      <div class="interview-card">
+        <div class="interview-avatar">A</div>
+        <div class="interview-info">
+          <p class="interview-name">Ana Grigore</p>
+          <p class="interview-role">Fondatoare, Meridian Ventures</p>
+        </div>
+        <span class="interview-status">În curând</span>
+      </div>
+      <div class="interview-card">
+        <div class="interview-avatar">M</div>
+        <div class="interview-info">
+          <p class="interview-name">Marina Pleșca</p>
+          <p class="interview-role">CEO, TechHub Chișinău</p>
+        </div>
+        <span class="interview-status">În curând</span>
+      </div>
+      <div class="interview-card">
+        <div class="interview-avatar">V</div>
+        <div class="interview-info">
+          <p class="interview-name">Valentina Sandu</p>
+          <p class="interview-role">Co-fondatoare, Agribusiness Women MD</p>
+        </div>
+        <span class="interview-status">În curând</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+  <div class="newsletter-inner">
+    <div class="newsletter-text reveal">
+      <p class="newsletter-eyebrow">Newsletter Săptămânal</p>
+      <h2 class="newsletter-title">Știrile care contează pentru tine — livrate vineri</h2>
+    </div>
+    <div class="reveal">
+      <form class="newsletter-form" onsubmit="return false;">
+        <input type="email" class="newsletter-input" placeholder="email@compania.ta">
+        <button type="submit" class="newsletter-btn">Abonează-te</button>
+      </form>
+      <p style="font-size:0.65rem; color:var(--muted); margin-top:0.6rem; letter-spacing:0.05em;">Fără spam · Dezabonare oricând · GDPR compliant</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">FONDA<span>T</span>OARE</div>
+        <p class="footer-tagline">Prima platformă media dedicată femeilor în afaceri din Moldova. Știri, oportunități, și poveștile care schimbă regulile jocului.</p>
+      </div>
+      <div>
+        <p class="footer-col-title">Platformă</p>
+        <ul class="footer-links">
+          <li><a href="#">Știri</a></li>
+          <li><a href="fondatoare-opportunities.html">Oportunități</a></li>
+          <li><a href="#">Organizații</a></li>
+          <li><a href="#">Interviuri Premium</a></li>
+          <li><a href="#">Newsletter</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-col-title">Despre</p>
+        <ul class="footer-links">
+          <li><a href="#">Misiunea noastră</a></li>
+          <li><a href="#">Echipa</a></li>
+          <li><a href="#">Parteneri</a></li>
+          <li><a href="#">Publicitate</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-col-title">Legal</p>
+        <ul class="footer-links">
+          <li><a href="#">Politica de confidențialitate</a></li>
+          <li><a href="#">Termeni și condiții</a></li>
+          <li><a href="#">Politica Cookies</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 FONDATOARE Media SRL, Chișinău, Moldova · Toate drepturile rezervate</p>
+      <div class="footer-socials">
+        <a href="#">Instagram</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">Telegram</a>
+        <a href="#">Facebook</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- MOBILE CTA BAR -->
+<div class="mobile-cta-bar">
+  <span>Femei. Putere. Afaceri.</span>
+  <a href="#">Abonează-te</a>
+</div>
+
+<script>
+// Hamburger
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+});
+
+// Scroll reveals
+const io = new IntersectionObserver(
+  entries => entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      io.unobserve(e.target);
+    }
+  }),
+  { threshold: 0.08 }
+);
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// Filter tabs
+document.querySelectorAll('.filter-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    const filter = tab.dataset.filter;
+    document.querySelectorAll('.news-card').forEach(card => {
+      if (filter === 'all' || card.dataset.category === filter) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+});
+
+// Lang toggle
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
