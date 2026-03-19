@@ -966,6 +966,41 @@ footer {
   .interviews-cards { display: none; }
 }
 
+/* ─── SCROLL TO TOP ─── */
+.scroll-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 44px;
+  height: 44px;
+  background: var(--ink);
+  border: 2px solid var(--accent);
+  color: #fff;
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 300;
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity 0.3s, transform 0.3s, background 0.2s;
+}
+
+.scroll-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.scroll-top:hover { background: var(--accent); }
+
+@media (max-width: 768px) {
+  .scroll-top { bottom: 5rem; right: 1rem; }
+}
+
 /* Mobile nav bar */
 .mobile-cta-bar {
   display: none;
@@ -1342,6 +1377,9 @@ footer {
   </div>
 </footer>
 
+<!-- SCROLL TO TOP -->
+<button class="scroll-top" id="scrollTop" aria-label="Sus">&#8593;</button>
+
 <!-- MOBILE CTA BAR -->
 <div class="mobile-cta-bar">
   <span>Femei. Putere. Afaceri.</span>
@@ -1382,6 +1420,15 @@ document.querySelectorAll('.filter-tab').forEach(tab => {
       }
     });
   });
+});
+
+// Scroll to top
+const scrollTopBtn = document.getElementById('scrollTop');
+window.addEventListener('scroll', () => {
+  scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+});
+scrollTopBtn.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
 // Lang toggle
